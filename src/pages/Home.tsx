@@ -8,6 +8,7 @@ import googleIconImg from '../assets/images/google-icon.svg';
 
 import { Button } from '../components/Button';
 
+
 import '../styles/auth.scss'
 
 export function Home(){
@@ -15,12 +16,7 @@ export function Home(){
 
     function handleCreateRoom() {
 
-        const provider= new firebase.auth.GoogleAuthProvider();
-
-        auth.signInWithPopup(provider).then(result =>{
-            console.log(result);
-            history.push('/rooms/new');
-        });
+        history.push('/rooms/new');
 
     }
 
