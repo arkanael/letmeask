@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 
-import {auth, firebase} from '../services/firebase';
+import { AuthContext } from '../App';
+import { useContext } from 'react';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
@@ -13,8 +14,12 @@ import '../styles/auth.scss'
 
 export function Home(){
     const history = useHistory();
+    const { user, signInWitGoogle } = useContext(AuthContext);
 
-    function handleCreateRoom() {
+    async function handleCreateRoom() {
+        if (!user){
+           await signInWitGoogle();
+        }
 
         history.push('/rooms/new');
 
